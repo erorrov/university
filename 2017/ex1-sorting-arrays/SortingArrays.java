@@ -61,7 +61,7 @@ public class SortingArrays {
 	}
 
 
-	private static int[] selectionSort(final int[] sArray){
+	private static int[] selectionSort(final int[] sArray) {
 		int[] slcArray = copyOf(sArray, sArray.length);
 		int tmp, min;
 
