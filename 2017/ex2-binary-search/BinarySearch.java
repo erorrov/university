@@ -61,8 +61,9 @@ public class BinarySearch {
 
 
     private static void search(final int[] array, final int search) {
-        int startBound, endBound, middle;
-        startBound = 0;
+        int startBound = 0;
+        int endBound = 0;
+        int middle = 0;
         endBound = array.length;
 
         while (true) {
@@ -79,6 +80,4 @@ public class BinarySearch {
             }
         }
     }
-
-
 }
