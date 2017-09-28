@@ -11,7 +11,7 @@ public class BinarySearch {
         final Scanner input = new Scanner(System.in);
 
         System.out.print("Array length: ");
-		final int[] array = bubbleSort(getRandomArray(input.nextInt()));
+        final int[] array = bubbleSort(getRandomArray(input.nextInt()));
         printArray("Array", array);
 
         System.out.print("To find: ");
@@ -20,44 +20,44 @@ public class BinarySearch {
 
 
     private static int[] getRandomArray(final int len) {
-		final Random rand = new Random();
-		final int[] randomArray = new int[len];
+        final Random rand = new Random();
+        final int[] randomArray = new int[len];
 
-		for (int i = 0; i < randomArray.length; ++i) {
-			randomArray[i] = rand.nextInt(MAX_ALLOWED_NUMBER);
-		}
+        for (int i = 0; i < randomArray.length; ++i) {
+            randomArray[i] = rand.nextInt(MAX_ALLOWED_NUMBER);
+        }
 
-		return randomArray;
-	}
+        return randomArray;
+    }
 
 
     private static void printArray(final String caption, final int[] array) {
-		System.out.print(caption + ":\t\t");
+        System.out.print(caption + ":\t\t");
 
-		for (final int elem : array) {
-			System.out.print(elem + "\t");
-		}
+        for (final int elem : array) {
+            System.out.print(elem + "\t");
+        }
 
-		System.out.println();
-	}
+        System.out.println();
+    }
 
 
     private static int[] bubbleSort(final int[] sArray) {
-		int[] bblArray = copyOf(sArray, sArray.length);
-		int tmp;
+        int[] bblArray = copyOf(sArray, sArray.length);
+        int tmp;
 
-		for (int i2 = 0; i2 < bblArray.length; i2++) {
-			for (int i = 0; i < bblArray.length - 1; i++) {
-				if (bblArray[i] > bblArray[i + 1]) {
-					tmp = bblArray[i];
-					bblArray[i] = bblArray[i + 1];
-					bblArray[i + 1] = tmp;
-				}
-			}
-		}
+        for (int i2 = 0; i2 < bblArray.length; i2++) {
+            for (int i = 0; i < bblArray.length - 1; i++) {
+                if (bblArray[i] > bblArray[i + 1]) {
+                    tmp = bblArray[i];
+                    bblArray[i] = bblArray[i + 1];
+                    bblArray[i + 1] = tmp;
+                }
+            }
+        }
 
-		return bblArray;
-	}
+        return bblArray;
+    }
 
 
     private static void search(final int[] array, final int search) {
@@ -78,7 +78,7 @@ public class BinarySearch {
                 endBound = middle;
             }
         }
-	}
+    }
 
 
 }
