@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 import static java.util.Arrays.copyOf;
 
-public class BinarySearch {
+public class Main {
 
     private static int MAX_ALLOWED_NUMBER = 99;
 
@@ -62,14 +62,11 @@ public class BinarySearch {
 
     private static void search(final int[] array, final int search) {
         int startBound = 0;
-        int endBound = 0;
+        int endBound = array.length;
         int middle = 0;
-        endBound = array.length;
 
         while (true) {
             middle = (endBound + startBound) / 2;
-            System.out.println("middle = " + middle);
-
             if (array[middle] == search) {
                 System.out.println("FOUND, i = " + middle);
                 break;
