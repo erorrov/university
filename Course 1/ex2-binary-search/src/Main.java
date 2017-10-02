@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-import static java.util.Arrays.copyOf;
 
 public class Main {
 
@@ -16,7 +15,9 @@ public class Main {
         System.out.println(Arrays.toString(array));
 
         System.out.print("To find: ");
-        int result = search(array, input.nextInt());
+        int result = recursiveSearch(array, input.nextInt(), 0);
+        //int result = search(array, input.nextInt());
+
         if (result == -1) {
             System.out.println("Nothing found");
         } else {
@@ -56,4 +57,21 @@ public class Main {
 
         return -1;
     }
+
+
+    private static int recursiveSearch(final int[] array, final int search, final int offset) {
+        if (array.length == 0) return -1;
+        final int middle = array.length / 2;
+
+        if (array[middle] == search) {
+            return middle + offset;
+        } else if (array[middle] > search) {
+            final int[] smArray = Arrays.copyOfRange(array, 0, middle);
+            return recursiveSearch(smArray, search, offset);
+        } else {
+            final int[] smArray = Arrays.copyOfRange(array, middle + 1, array.length);
+            return recursiveSearch(smArray, search, offset + array.length - middle + 1);
+        }
+    }
 }
+
