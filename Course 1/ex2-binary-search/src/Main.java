@@ -15,7 +15,7 @@ public class Main {
         System.out.println(Arrays.toString(array));
 
         System.out.print("To find: ");
-        int result = recursiveSearch(array, input.nextInt(), 0);
+        int result = recursiveSearch(array, input.nextInt(), 0, array.length - 1);
         //int result = search(array, input.nextInt());
 
         if (result == -1) {
@@ -59,19 +59,15 @@ public class Main {
     }
 
 
-    private static int recursiveSearch(final int[] array, final int search, final int offset) {
-        if (array.length == 0) return -1;
-        final int middle = array.length / 2;
+    private static int recursiveSearch(final int[] array, final int search, final int startBound, final int endBound) {
+        final int middle = (endBound + startBound) / 2;
 
         if (array[middle] == search) {
-            return middle + offset;
-        } else if (array[middle] > search) {
-            final int[] smArray = Arrays.copyOfRange(array, 0, middle);
-            return recursiveSearch(smArray, search, offset);
+            return middle;
+        } else if (array[middle] < search) {
+            return recursiveSearch(array, search, middle + 1, endBound);
         } else {
-            final int[] smArray = Arrays.copyOfRange(array, middle + 1, array.length);
-            return recursiveSearch(smArray, search, offset + array.length - middle + 1);
+            return recursiveSearch(array, search, middle, endBound - 1);
         }
     }
 }
-
