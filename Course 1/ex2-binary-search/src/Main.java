@@ -59,6 +59,24 @@ public class Main {
     }
 
 
+    /*
+    private static int recursiveSearch(final int[] array, final int search, final int offset) {
+        if (array.length == 0) return -1;
+        final int middle = array.length / 2;
+
+        if (array[middle] == search) {
+            return middle + offset;
+        } else if (array[middle] > search) {
+            final int[] smArray = Arrays.copyOfRange(array, 0, middle);
+            return recursiveSearch(smArray, search, offset);
+        } else {
+            final int[] smArray = Arrays.copyOfRange(array, middle + 1, array.length);
+            return recursiveSearch(smArray, search, offset + array.length - middle + 1);
+        }
+    }
+     */
+
+
     private static int recursiveSearch(final int[] array, final int search, final int startBound, final int endBound) {
         final int middle = (endBound + startBound) / 2;
 
