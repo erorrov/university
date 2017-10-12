@@ -77,14 +77,14 @@ public class Main {
      */
 
 
-    private static int recursiveSearch(final int[] array, final int search, final int startBound, final int endBound){
+    private static int recursiveSearch(final int[] array, final int search, final int startBound, final int endBound) {
         if(endBound < startBound) return -1;
 
         final int middle = (endBound + startBound) / 2;
 
-        if (search == array[middle]){
+        if (search == array[middle]) {
             return middle;
-        } else if (array[middle] > search){
+        } else if (array[middle] > search) {
             return recursiveSearch(array, search, startBound, middle - 1);
         } else {
             return recursiveSearch(array, search, middle + 1, endBound);
