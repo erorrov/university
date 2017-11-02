@@ -11,10 +11,10 @@ import java.io.*;
 
 class Editor extends JFrame implements ActionListener, DocumentListener {
 
-    private JMenuBar menuBar = new JMenuBar();
-    private JTextArea textArea = new JTextArea();
+    final private JMenuBar menuBar = new JMenuBar();
+    final private JTextArea textArea = new JTextArea();
     private File file;
-    public boolean changed = false;
+    private boolean changed = false;
 
     public Editor() {
         super("Text Editor");
@@ -33,27 +33,31 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
     private void buildMenuBar() {
         setJMenuBar(menuBar);
 
-        JMenu mFile = new JMenu("File");
+        final JMenu mFile = new JMenu("File");
         menuBar.add(mFile);
-        JMenuItem fNew = new JMenuItem("New");
+        final JMenuItem fNew = new JMenuItem("New");
         mFile.add(fNew);
         fNew.addActionListener(this);
-        JMenuItem fOpen = new JMenuItem("Open");
+        final JMenuItem fOpen = new JMenuItem("Open");
         mFile.add(fOpen);
         fOpen.addActionListener(this);
-        JMenuItem fSave = new JMenuItem("Save");
+        final JMenuItem fSave = new JMenuItem("Save");
         mFile.add(fSave);
         fSave.addActionListener(this);
 
-        JMenu mEdit = new JMenu("Edit");
+        final JMenu mEdit = new JMenu("Edit");
         menuBar.add(mEdit);
-        JMenuItem eCopy = new JMenuItem("Copy");
+        final JMenuItem eUndo = new JMenuItem("Undo");
+        mEdit.add(eUndo);
+        final JMenuItem eRedo = new JMenuItem("Redo");
+        mEdit.add(eRedo);
+        final JMenuItem eCopy = new JMenuItem("Copy");
         mEdit.add(eCopy);
-        JMenuItem eCut = new JMenuItem("Cut");
+        final JMenuItem eCut = new JMenuItem("Cut");
         mEdit.add(eCut);
-        JMenuItem ePaste = new JMenuItem("Paste");
+        final JMenuItem ePaste = new JMenuItem("Paste");
         mEdit.add(ePaste);
-        JMenuItem eSelectAll = new JMenuItem("Select All");
+        final JMenuItem eSelectAll = new JMenuItem("Select All");
         mEdit.add(eSelectAll);
         eSelectAll.addActionListener(this);
 
@@ -64,14 +68,11 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         mFind.add(fFind);
         */
 
-        JMenu mHelp = new JMenu("Help");
+        final JMenu mHelp = new JMenu("Help");
         menuBar.add(mHelp);
-        JMenuItem hAuthor = new JMenuItem("Author");
-        mHelp.add(hAuthor);
-        hAuthor.addActionListener(this);
-        JMenuItem hSource = new JMenuItem("Source code");
-        mHelp.add(hSource);
-        hSource.addActionListener(this);
+        final JMenuItem hAbout = new JMenuItem("About");
+        mHelp.add(hAbout);
+        hAbout.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -83,11 +84,13 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
             newFile();
         } else if (action.equals("Open")) {
             loadFile();
+        } else if (action.equals("Undo")) {
+            //
+        } else if (action.equals("Redo")) {
+            //
         } else if (action.equals("Save")) {
             saveFile();
-        } else if (action.equals("Author")) {
-            //
-        } else if (action.equals("Source code")) {
+        } else if (action.equals("About")) {
             //
         } else if (action.equals("Copy")) {
             textArea.copy();
