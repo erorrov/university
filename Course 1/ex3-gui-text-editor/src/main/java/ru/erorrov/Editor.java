@@ -3,10 +3,6 @@ package ru.erorrov;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.event.UndoableEditEvent;
-import javax.swing.event.UndoableEditListener;
-import javax.swing.undo.CannotRedoException;
-import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +26,8 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         add(scrollPane, BorderLayout.CENTER);
 
         buildMenuBar();
+
+        textArea.getDocument().addDocumentListener(this);
     }
 
     private void buildMenuBar() {
@@ -84,7 +82,7 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
 
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-        System.out.println("New action: "+ e.toString());
+        //System.out.println("New action: "+ e.toString());
         if (action.equals("Quit")) {
             System.exit(0);
         } else if (action.equals("New")) {
