@@ -3,6 +3,10 @@ package ru.erorrov;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
+import javax.swing.undo.CannotRedoException;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,8 +30,6 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         add(scrollPane, BorderLayout.CENTER);
 
         buildMenuBar();
-
-        textArea.getDocument().addDocumentListener(this);
     }
 
     private void buildMenuBar() {
@@ -49,14 +51,19 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         menuBar.add(mEdit);
         final JMenuItem eUndo = new JMenuItem("Undo");
         mEdit.add(eUndo);
+        eUndo.addActionListener(this);
         final JMenuItem eRedo = new JMenuItem("Redo");
         mEdit.add(eRedo);
+        eRedo.addActionListener(this);
         final JMenuItem eCopy = new JMenuItem("Copy");
         mEdit.add(eCopy);
+        eCopy.addActionListener(this);
         final JMenuItem eCut = new JMenuItem("Cut");
         mEdit.add(eCut);
+        eCut.addActionListener(this);
         final JMenuItem ePaste = new JMenuItem("Paste");
         mEdit.add(ePaste);
+        ePaste.addActionListener(this);
         final JMenuItem eSelectAll = new JMenuItem("Select All");
         mEdit.add(eSelectAll);
         eSelectAll.addActionListener(this);
@@ -77,7 +84,7 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
 
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-        //System.out.println("New action: "+ e.toString());
+        System.out.println("New action: "+ e.toString());
         if (action.equals("Quit")) {
             System.exit(0);
         } else if (action.equals("New")) {
@@ -85,13 +92,13 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         } else if (action.equals("Open")) {
             loadFile();
         } else if (action.equals("Undo")) {
-            //
+            //TODO
         } else if (action.equals("Redo")) {
-            //
+            //TODO
         } else if (action.equals("Save")) {
             saveFile();
         } else if (action.equals("About")) {
-            //
+            //TODO
         } else if (action.equals("Copy")) {
             textArea.copy();
         } else if (action.equals("Cut")) {
