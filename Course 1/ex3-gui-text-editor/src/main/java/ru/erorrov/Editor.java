@@ -3,6 +3,7 @@ package ru.erorrov;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,8 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
     private File file;
     private boolean changed = false;
 
+    UndoManager undoManager = new UndoManager();
+
     public Editor() {
         super("Text Editor");
         this.setBounds(350, 200, 700, 400);
@@ -28,6 +31,9 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         buildMenuBar();
 
         textArea.getDocument().addDocumentListener(this);
+
+        textArea.getDocument().addUndoableEditListener(undoManager);
+
     }
 
     private void buildMenuBar() {
@@ -66,13 +72,6 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         mEdit.add(eSelectAll);
         eSelectAll.addActionListener(this);
 
-        /*
-        JMenu mFind = new JMenu("Find");
-        menuBar.add(mFind);
-        JMenuItem fFind = new JMenuItem("Find...");
-        mFind.add(fFind);
-        */
-
         final JMenu mHelp = new JMenu("Help");
         menuBar.add(mHelp);
         final JMenuItem hAbout = new JMenuItem("About");
@@ -90,9 +89,9 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         } else if (action.equals("Open")) {
             loadFile();
         } else if (action.equals("Undo")) {
-            //TODO
+            undoManager.undo();
         } else if (action.equals("Redo")) {
-            //TODO
+            undoManager.redo();
         } else if (action.equals("Save")) {
             saveFile();
         } else if (action.equals("About")) {
@@ -152,13 +151,11 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
 
     private void saveFile() {
         if (file == null) {
-            //save new file
             JFileChooser dialog = new JFileChooser(System.getProperty("user.home"));
             dialog.setDialogTitle("Save new file as...");
             dialog.showSaveDialog(this);
             file = dialog.getSelectedFile();
         } else {
-            //save old file
             setTitle(file.getName() + " (saved)");
         }
 
