@@ -95,7 +95,7 @@ class Editor extends JFrame implements ActionListener, DocumentListener {
         } else if (action.equals("Save")) {
             saveFile();
         } else if (action.equals("About")) {
-            //TODO
+            new About(this);
         } else if (action.equals("Copy")) {
             textArea.copy();
         } else if (action.equals("Cut")) {
