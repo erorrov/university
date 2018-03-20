@@ -1,12 +1,15 @@
 #include <iostream>
 #include <cmath>
 
-int main() {
+int quadraticEquation() {
+    //Обявление пространства имён std
     using namespace std;
+
+    //Кириллица в консоли
     setlocale(LC_ALL, "Russian");
 
+    //Ввод необходимых переменных
     double d, a, b, c;
-
     cout << "a = ";
     cin >> a;
     cout << "b = ";
@@ -14,8 +17,10 @@ int main() {
     cout << "c = ";
     cin >> c;
 
+    //Вычисление дискриминанта
     d = b * b - 4 * a * c;
 
+    //Вычисление корней
     if (d < 0) {
         cout << "Уравнение не имеет корней" << endl;
     } else if (d == 0) {

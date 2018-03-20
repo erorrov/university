@@ -3,4 +3,4 @@ project(homework1)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(homework1 sqroot.cpp)
+add_executable(homework1 quadraticEquation.cpp)

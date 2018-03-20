@@ -1,11 +1,13 @@
 #include <iostream>
 
-int main() {
+int ifStatementExample() {
+    //Кириллица в консоли
     setlocale(LC_ALL, "Russian");
 
+    //Ввод возраста
     int age;
-
     std::cout << "Сколько вам лет?" << std::endl;
+    std::cout << "Ввод: ";
     std::cin >> age;
 
     if (age < 18) {

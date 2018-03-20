@@ -1,15 +1,17 @@
 #include <iostream>
 #include <ctime>
 
-int main() {
+int switchStatementExample() {
+    //Кириллица в консоли
     setlocale(LC_ALL, "Russian");
 
+    //Определение текущего месяца
     time_t theTime = time(NULL);
     struct tm *aTime = localtime(&theTime);
-
     int month = aTime->tm_mon + 1;
-    std::string monthString;
 
+    //Определение названия месяца
+    std::string monthString;
     switch (month) {
         case 1:
             monthString = "Январь";
@@ -49,7 +51,6 @@ int main() {
             break;
         default:
             monthString = "Какой-то несуществующий месяц";
-            break;
     }
 
     std::cout << "Сейчас: " << monthString << std::endl;

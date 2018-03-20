@@ -3,4 +3,4 @@ project(if_switch)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(if_switch ifExample1.cpp)
+#add_executable(if_switch main.cpp)
